@@ -16,25 +16,25 @@ public class PaketWebController {
 
     @GetMapping("/")
     public String index(Model model){
-        model.addAttribute("vaksinn", paketService.getAllPakets());
+        model.addAttribute("absen", paketService.getAllPakets());
         return "index";
     }
 
     @GetMapping(value = "/create")
     public String create1(Model model){
-        model.addAttribute("vaksinn", new Absen());
+        model.addAttribute("absen", new Absen());
         return "formpaket";
     }
 
     @PostMapping(value = "/create")
     public String tambahPaket(Model model, Absen absen){
-        model.addAttribute("vaksinn", paketService.save(absen));
+        model.addAttribute("absen", paketService.save(absen));
         return "redirect:/";
     }
 
     @GetMapping(value = "/edit/{id}")
     public String editForm(@PathVariable Long id, Model model){
-        model.addAttribute("vaksinn", paketService.findById(id));
+        model.addAttribute("absen", paketService.findById(id));
         return "formpaket";
     }
 
